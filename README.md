@@ -36,3 +36,24 @@ I am working on creating more of these language servers for different types
 of configuration files in the future.
 </p>
 </div>
+
+<div>
+<h2>Resources</h2>
+<ul>
+<li>
+<span>
+<a href="https://rust-lang.github.io/rustfmt/">Rustfmt documentation</a>
+</span>
+</li>
+<li>
+<span>
+<a href="https://zed.dev/docs/extensions/">Zed extension documentation</a>
+</span>
+</li>
+<li>
+<span>
+<a href="https://github.com/zed-industries/zed/">Zed source-code</a>
+</span>
+</li>
+</ul>
+</div>
