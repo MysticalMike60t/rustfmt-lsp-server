@@ -1,0 +1,17 @@
+{
+  "file_types": {
+    "HTML": ["README.md"],
+  },
+  "languages": {
+    "HTML": {
+      "auto_indent": "none",
+      "auto_indent_on_paste": false,
+      "indent_list_on_tab": false,
+      "indent_guides": {
+        "enabled": false,
+      },
+      "hard_tabs": false,
+      "format_on_save": "off",
+    },
+  },
+}

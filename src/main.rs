@@ -30,24 +30,24 @@ enum ValueKind {
 fn all_keys() -> Vec<KeyInfo> {
     vec![
         KeyInfo {
-            name: "max_width",
-            doc: "Maximum width of each line.",
-            default: "100",
+            name: "array_width",
+            doc: "Maximum width of an array literal before falling back to vertical formatting.",
+            default: "60",
             values: vec![],
             kind: ValueKind::Integer,
         },
         KeyInfo {
-            name: "hard_tabs",
-            doc: "Use tab characters for indentation, and convert spaces to tabs where possible.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
+            name: "attr_fn_like_width",
+            doc: "Maximum width of the args of a function-like attributes before falling back to vertical formatting.",
+            default: "70",
+            values: vec![],
+            kind: ValueKind::Integer,
         },
         KeyInfo {
-            name: "tab_spaces",
-            doc: "Number of spaces per tab.",
-            default: "4",
-            values: vec![],
+            name: "binop_seperator",
+            doc: "Where to put a binary operator when a binary expression goes multiline.",
+            default: "Front",
+            values: vec!["Front", "Back"],
             kind: ValueKind::Integer,
         },
         KeyInfo {
