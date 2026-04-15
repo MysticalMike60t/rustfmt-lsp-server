@@ -91,6 +91,27 @@ fn all_keys() -> Vec<KeyInfo> {
             values: vec!["true", "false"],
             kind: ValueKind::Bool,
         },
+        KeyInfo {
+            name: "comment_width",
+            doc: "Maximum length of comments. No effect unless `wrap_comments = true`.",
+            default: "80",
+            values: vec![],
+            kind: ValueKind::Integer,
+        },
+        KeyInfo {
+            name: "condense_wildcard_suffixes",
+            doc: "Replace strings of _ wildcards by a single .. in tuple patterns.",
+            default: "false",
+            values: vec!["true", "false"],
+            kind: ValueKind::Bool,
+        },
+        KeyInfo {
+            name: "control_brace_style",
+            doc: "Brace style for control flow constructs.",
+            default: "\"AlwaysSameLine\"",
+            values: vec!["\"AlwaysNextLine\"", "\"AlwaysSameLine\"", "\"ClosingNextLine\""],
+            kind: ValueKind::Enum,
+        },
         // KeyInfo {
         //     name: "",
         //     doc: "",
