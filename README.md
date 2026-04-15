@@ -14,7 +14,6 @@ Rustfmt Language Server
 </div>
 
 <div align="center">
-<hr />
 <img alt="GitHub commits since latest release" src="https://img.shields.io/github/commits-since/MysticalMike60t/rustfmt-lsp-server/latest?sort=semver&style=plastic">
 </div>
 
