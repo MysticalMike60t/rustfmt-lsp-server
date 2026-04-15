@@ -26,14 +26,29 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      # - name: Install cross-compilation tools
+      #   if: matrix.target == 'aarch64-unknown-linux-gnu'
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y gcc-aarch64-linux-gnu
+      #     echo "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc" >> $GITHUB_ENV
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}
       - run: cargo build --release --target ${{ matrix.target }}
+      - name: Rename binary
+        shell: bash
+        run: |
+          cd target/${{ matrix.target }}/release
+          if [ -f rustfmt-lsp-server.exe ]; then
+            cp rustfmt-lsp-server.exe ${{ matrix.name }}
+          else
+            cp rustfmt-lsp-server ${{ matrix.name }}
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.name }}
-          path: target/${{ matrix.target }}/release/rustfmt-lsp-server*
+          path: target/${{ matrix.target }}/release/${{ matrix.name }}
 
   release:
     needs: build
@@ -44,4 +59,4 @@ jobs:
       - uses: actions/download-artifact@v4
       - uses: softprops/action-gh-release@v2
         with:
-          files: "**/*"
+          files: "**/rustfmt-lsp-server-*"
