@@ -1,4 +1,3 @@
-use serde_json::Value;
 use std::collections::HashMap;
 use std::sync::Mutex;
 use tower_lsp::jsonrpc::Result;
@@ -12,19 +11,19 @@ struct RustfmtLsp {
 
 #[derive(Clone)]
 struct KeyInfo {
-    name: &'static str,
-    doc: &'static str,
-    default: &'static str,
-    values: Vec<&'static str>, // empty = freeform (number/string), non-empty = enum
-    kind: ValueKind,
+    #[allow(warnings)] name: &'static str,
+    #[allow(warnings)] doc: &'static str,
+    #[allow(warnings)] default: &'static str,
+    #[allow(warnings)] values: Vec<&'static str>,
+    #[allow(warnings)] kind: ValueKind,
 }
 
 #[derive(Clone)]
 enum ValueKind {
-    Bool,
-    Integer,
-    String,
-    Enum,
+    #[allow(warnings)] Bool,
+    #[allow(warnings)] Integer,
+    #[allow(warnings)] String,
+    #[allow(warnings)] Enum,
 }
 
 fn all_keys() -> Vec<KeyInfo> {
@@ -46,359 +45,30 @@ fn all_keys() -> Vec<KeyInfo> {
         KeyInfo {
             name: "binop_seperator",
             doc: "Where to put a binary operator when a binary expression goes multiline.",
-            default: "Front",
-            values: vec!["Front", "Back"],
-            kind: ValueKind::Integer,
-        },
-        KeyInfo {
-            name: "newline_style",
-            doc: "Unix or Windows line endings.",
-            default: "\"Auto\"",
-            values: vec!["\"Auto\"", "\"Native\"", "\"Unix\"", "\"Windows\""],
+            default: "\"Front\"",
+            values: vec!["\"Front\"", "\"Back\""],
             kind: ValueKind::Enum,
         },
         KeyInfo {
-            name: "indent_style",
-            doc: "Indent on expressions or items.",
-            default: "\"Block\"",
-            values: vec!["\"Block\"", "\"Visual\""],
-            kind: ValueKind::Enum,
-        },
-        KeyInfo {
-            name: "use_small_heuristics",
-            doc: "Whether to use different formatting for items and expressions if they satisfy a heuristic notion of 'small'.",
-            default: "\"Default\"",
-            values: vec!["\"Default\"", "\"Off\"", "\"Max\""],
-            kind: ValueKind::Enum,
-        },
-        KeyInfo {
-            name: "edition",
-            doc: "The Rust edition to use for parsing.",
-            default: "\"2015\"",
-            values: vec!["\"2015\"", "\"2018\"", "\"2021\"", "\"2024\""],
-            kind: ValueKind::Enum,
-        },
-        KeyInfo {
-            name: "merge_derives",
-            doc: "Merge multiple derives into a single one.",
-            default: "true",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "use_try_shorthand",
-            doc: "Replace uses of the try! macro by the ? shorthand.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "use_field_init_shorthand",
-            doc: "Use field init shorthand if possible.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "reorder_imports",
-            doc: "Reorder import and extern crate statements alphabetically.",
-            default: "true",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "reorder_modules",
-            doc: "Reorder module statements alphabetically in group.",
-            default: "true",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "remove_nested_parens",
-            doc: "Remove nested parens.",
-            default: "true",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "fn_args_layout",
-            doc: "Control the layout of arguments in a function.",
-            default: "\"Tall\"",
-            values: vec!["\"Compressed\"", "\"Tall\"", "\"Vertical\""],
-            kind: ValueKind::Enum,
-        },
-        KeyInfo {
-            name: "force_explicit_abi",
-            doc: "Always print the abi for extern items.",
-            default: "true",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "format_strings",
-            doc: "Format string literals where necessary.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "wrap_comments",
-            doc: "Break comments to fit on the line.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "comment_width",
-            doc: "Maximum length of comments. No effect unless wrap_comments = true.",
-            default: "80",
-            values: vec![],
-            kind: ValueKind::Integer,
-        },
-        KeyInfo {
-            name: "normalize_comments",
-            doc: "Convert /* */ comments to // comments where possible.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "normalize_doc_attributes",
-            doc: "Convert #![doc] and #[doc] attributes to //! and /// doc comments.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "format_code_in_doc_comments",
-            doc: "Format code snippet included in doc comments.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "doc_comment_code_block_width",
-            doc: "Max width for code snippets included in doc comments. Only used if format_code_in_doc_comments is true.",
-            default: "100",
-            values: vec![],
-            kind: ValueKind::Integer,
-        },
-        KeyInfo {
-            name: "match_arm_blocks",
-            doc: "Wrap the body of arms in blocks when it does not fit on the same line.",
-            default: "true",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "match_arm_leading_pipes",
-            doc: "Controls whether to include a leading pipe on match arms.",
-            default: "\"Never\"",
-            values: vec!["\"Always\"", "\"Never\"", "\"Preserve\""],
-            kind: ValueKind::Enum,
-        },
-        KeyInfo {
-            name: "match_block_trailing_comma",
-            doc: "Put a trailing comma after a block based match arm (non-block arms are not affected).",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "force_multiline_blocks",
-            doc: "Force multiline closure and match arm bodies to be wrapped in a block.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "fn_single_line",
-            doc: "Put single-expression functions on a single line.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "where_single_line",
-            doc: "Force where-clauses to be on a single line.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "imports_indent",
-            doc: "Indent of imports.",
-            default: "\"Block\"",
-            values: vec!["\"Block\"", "\"Visual\""],
-            kind: ValueKind::Enum,
-        },
-        KeyInfo {
-            name: "imports_layout",
-            doc: "Item layout inside a import block.",
-            default: "\"Mixed\"",
-            values: vec!["\"Horizontal\"", "\"HorizontalVertical\"", "\"Mixed\"", "\"Vertical\""],
-            kind: ValueKind::Enum,
-        },
-        KeyInfo {
-            name: "imports_granularity",
-            doc: "How imports should be grouped into use statements.",
-            default: "\"Preserve\"",
-            values: vec!["\"Preserve\"", "\"Crate\"", "\"Module\"", "\"Item\"", "\"One\""],
-            kind: ValueKind::Enum,
-        },
-        KeyInfo {
-            name: "group_imports",
-            doc: "Controls the strategy for how imports are grouped together.",
-            default: "\"Preserve\"",
-            values: vec!["\"Preserve\"", "\"StdExternalCrate\"", "\"One\""],
-            kind: ValueKind::Enum,
-        },
-        KeyInfo {
-            name: "reorder_impl_items",
-            doc: "Reorder impl items. type and const are put first, then macros and methods.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "hex_literal_case",
-            doc: "Format the hex literals in expressions.",
-            default: "\"Preserve\"",
-            values: vec!["\"Preserve\"", "\"Upper\"", "\"Lower\""],
-            kind: ValueKind::Enum,
-        },
-        KeyInfo {
-            name: "empty_item_single_line",
-            doc: "Put empty-body functions and impls on a single line.",
-            default: "true",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "struct_lit_single_line",
-            doc: "Put small struct literals on a single line.",
-            default: "true",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "trailing_semicolon",
-            doc: "Add trailing semicolon after break, continue and return.",
-            default: "true",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "trailing_comma",
-            doc: "How to handle trailing commas for lists.",
-            default: "\"Vertical\"",
-            values: vec!["\"Always\"", "\"Never\"", "\"Vertical\""],
-            kind: ValueKind::Enum,
-        },
-        KeyInfo {
-            name: "overflow_delimited_expr",
-            doc: "Allow trailing bracket/parenthesis to overflow after a function call if the last expression is a block-like structure.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "struct_field_align_threshold",
-            doc: "The maximum diff of width between struct fields to be aligned with each other.",
+            name: "blank_lines_lower_bound",
+            doc: "Minimum number of blank lines which must be put between items. If two items have fewer blank lines between them, additional blank lines are inserted.",
             default: "0",
             values: vec![],
             kind: ValueKind::Integer,
         },
         KeyInfo {
-            name: "enum_discrim_align_threshold",
-            doc: "The maximum diff of width between enum variants to be aligned with each other.",
-            default: "0",
+            name: "blank_lines_upper_bound",
+            doc: "Maximum number of blank lines which can be put between items. If more than this number of consecutive empty lines are found, they are trimmed down to match this integer.",
+            default: "1",
             values: vec![],
             kind: ValueKind::Integer,
         },
         KeyInfo {
-            name: "space_before_colon",
-            doc: "Leave a space before the colon.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "space_after_colon",
-            doc: "Leave a space after the colon.",
-            default: "true",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "spaces_around_ranges",
-            doc: "Put spaces around the .. and ..= range operators.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "type_punctuation_density",
-            doc: "Determines if + or = are wrapped in spaces in the punctuation of types.",
-            default: "\"Wide\"",
-            values: vec!["\"Compressed\"", "\"Wide\""],
+            name: "brace_style",
+            doc: "Brace style for items.",
+            default: "\"SameLineWhere\"",
+            values: vec!["\"AlwaysNextLine\"", "\"PreferSameLine\"", "\"SameLineWhere\""],
             kind: ValueKind::Enum,
-        },
-        KeyInfo {
-            name: "unstable_features",
-            doc: "Enable unstable features on the unstable channel.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "disable_all_formatting",
-            doc: "Don't reformat anything.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "skip_children",
-            doc: "Don't reformat out of line modules.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "show_parse_errors",
-            doc: "Show parse errors.",
-            default: "true",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "error_on_line_overflow",
-            doc: "Error if unable to get all lines within max_width.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "error_on_unformatted",
-            doc: "Error if unable to get comments or string literals within max_width, or they are left with trailing whitespace.",
-            default: "false",
-            values: vec!["true", "false"],
-            kind: ValueKind::Bool,
-        },
-        KeyInfo {
-            name: "array_width",
-            doc: "Maximum width of an array literal before falling back to vertical formatting.",
-            default: "60",
-            values: vec![],
-            kind: ValueKind::Integer,
-        },
-        KeyInfo {
-            name: "attr_fn_like_width",
-            doc: "Maximum width of the args of a function-like attribute macro before falling back to vertical formatting.",
-            default: "70",
-            values: vec![],
-            kind: ValueKind::Integer,
         },
         KeyInfo {
             name: "chain_width",
@@ -408,44 +78,29 @@ fn all_keys() -> Vec<KeyInfo> {
             kind: ValueKind::Integer,
         },
         KeyInfo {
-            name: "fn_call_width",
-            doc: "Maximum width of the args of a function call before falling back to vertical formatting.",
-            default: "60",
-            values: vec![],
-            kind: ValueKind::Integer,
+            name: "color",
+            doc: "Whether to use colored output or not.",
+            default: "\"Auto\"",
+            values: vec!["\"Auto\"", "\"Always\"", "\"Never\""],
+            kind: ValueKind::Enum,
         },
         KeyInfo {
-            name: "single_line_if_else_max_width",
-            doc: "Maximum line length for single line if-else expressions. Zero means always break.",
-            default: "50",
-            values: vec![],
-            kind: ValueKind::Integer,
+            name: "combine_control_expr",
+            doc: "Combine control expressions with function calls.",
+            default: "true",
+            values: vec!["true", "false"],
+            kind: ValueKind::Bool,
         },
-        KeyInfo {
-            name: "single_line_let_else_max_width",
-            doc: "Maximum line length for single line let-else statements. Zero means always break.",
-            default: "50",
-            values: vec![],
-            kind: ValueKind::Integer,
-        },
-        KeyInfo {
-            name: "struct_lit_width",
-            doc: "Maximum width in the body of a struct literal before falling back to vertical formatting.",
-            default: "18",
-            values: vec![],
-            kind: ValueKind::Integer,
-        },
-        KeyInfo {
-            name: "struct_variant_width",
-            doc: "Maximum width in the body of a struct variant before falling back to vertical formatting.",
-            default: "35",
-            values: vec![],
-            kind: ValueKind::Integer,
-        },
+        // KeyInfo {
+        //     name: "",
+        //     doc: "",
+        //     default: "",
+        //     values: vec![],
+        //     kind: ValueKind::,
+        // },
     ]
 }
 
-/// Figure out what the user is typing on the current line
 fn parse_line_context(line: &str) -> LineContext {
     if let Some(eq_pos) = line.find('=') {
         let key = line[..eq_pos].trim().to_string();
@@ -463,7 +118,6 @@ enum LineContext {
     Value { key: String, partial: String },
 }
 
-/// Get all keys already defined in the document
 fn existing_keys(text: &str) -> Vec<String> {
     text.lines()
         .filter_map(|line| {
@@ -543,7 +197,6 @@ impl LanguageServer for RustfmtLsp {
         let used = existing_keys(&doc_text);
 
         match parse_line_context(current_line) {
-            // User is typing a key name
             LineContext::Key { partial } => {
                 let items: Vec<CompletionItem> = keys
                     .iter()
@@ -563,7 +216,6 @@ impl LanguageServer for RustfmtLsp {
                         )),
                         insert_text: Some(format!("{} = {}", k.name, k.default)),
                         insert_text_format: Some(InsertTextFormat::PLAIN_TEXT),
-                        // Replace the entire line content before cursor
                         text_edit: Some(CompletionTextEdit::Edit(TextEdit {
                             range: Range {
                                 start: Position {
@@ -581,14 +233,12 @@ impl LanguageServer for RustfmtLsp {
                 Ok(Some(CompletionResponse::Array(items)))
             }
 
-            // User is typing a value after '='
             LineContext::Value { key, partial } => {
                 let key_info = match keys.iter().find(|k| k.name == key) {
                     Some(k) => k,
                     None => return Ok(None),
                 };
 
-                // If the key has known enum/bool values, suggest them
                 if !key_info.values.is_empty() {
                     let items: Vec<CompletionItem> = key_info
                         .values
@@ -606,7 +256,6 @@ impl LanguageServer for RustfmtLsp {
                                 } else {
                                     None
                                 },
-                                // Replace everything after '= '
                                 text_edit: Some(CompletionTextEdit::Edit(TextEdit {
                                     range: Range {
                                         start: Position {
@@ -630,7 +279,6 @@ impl LanguageServer for RustfmtLsp {
 
                     Ok(Some(CompletionResponse::Array(items)))
                 } else {
-                    // For integer fields, suggest the default
                     Ok(Some(CompletionResponse::Array(vec![CompletionItem {
                         label: key_info.default.to_string(),
                         kind: Some(CompletionItemKind::VALUE),
