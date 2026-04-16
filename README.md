@@ -33,8 +33,8 @@ Configurations Language Server
 <h2>Current supported files</h2>
 <p>Last updated on <b>16/04/2026</b></p>
 <ol>
-<li>`rustfmt.toml` <sub id="fb1">[1](#f1)</sub></li>
-<li>`.rustfmt.toml` <sub id="fb1">[1](#f1)</sub></li>
+<li>`rustfmt.toml` <sub id="fb1"><a href="#f1">1</a></sub></li>
+<li>`.rustfmt.toml` <sub id="fb1"><a href="#f1">1</a></sub></li>
 </ol>
 </div>
 
@@ -53,7 +53,7 @@ of configuration files in the future.
 <ol>
 <li name="footnote-1" id="f1">
 <p name="footnote-1-content">
-<a href="#fb1">↩</a><strong>Resources I used for development</strong>
+<span><a href="#fb1">↩</a> <strong>Resources I used for development</strong></span>
 <ul>
 <li><span><a href="https://rust-lang.github.io/rustfmt/"><b>Rustfmt</b> documentation</a></span></li>
 <li><span><a href="https://zed.dev/docs/extensions/"><b>Zed</b> extension documentation</a></span></li>
