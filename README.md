@@ -86,7 +86,7 @@ This also includes <i>all</i> files inside of the <code>.dev/</code> folder.
 <span>All of these files can be deleted, and the <i>language server</i> will work as expected.</span>
 <span>If it <strong>does</strong> make an impact on the main functionality, please <a href="https://github.com/MysticalMike60t/configs-lsp-server/issues/new/choose">Open an Issue</a>.</span>
 <span><b>Currently tracked development files/folders</b></span>
-<span>Presented in `.gitignore` format.</span>
+<span>Presented in <code>.gitignore</code> format.</span>
 <ul>
 <li><code>.zed/</code></li>
 <li><code>.dev/</code></li>
