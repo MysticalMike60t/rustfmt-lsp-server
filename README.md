@@ -32,6 +32,9 @@ Configurations Language Server
 <div>
 <h2>Current supported files</h2>
 <p>Last updated on <b>16/04/2026</b></p>
+<table>
+
+</table>
 <ol>
 <li><code>rustfmt.toml</code> <sup id="fb1"><a href="#f1">1</a></sup></li>
 <li><code>.rustfmt.toml</code> <sup id="fb1"><a href="#f1">1</a></sup></li>
@@ -49,6 +52,17 @@ of configuration files in the future.
 </p>
 </div>
 
+<div>
+<h2>More Info</h2>
+<p>
+Any <b>Python</b> files (<code>*.py[w][c]</code>, <code>.python-version</code>, <code>pyproject.toml</code>, <code>.venv/</code>, etc) are not
+needed for the extension. These are <strong>just</strong> for <strong>usage during development</strong><sup id="fb2"><a href="#f2">2</a></sup>.
+</p>
+<p>
+This also includes <i>all</i> files inside of the <code>.dev/</code> folder.
+</p>
+</div>
+
 <hr />
 
 <div id="document-footnote">
@@ -60,6 +74,25 @@ of configuration files in the future.
 <li><span><a href="https://rust-lang.github.io/rustfmt/"><b>Rustfmt</b> documentation</a></span></li>
 <li><span><a href="https://zed.dev/docs/extensions/"><b>Zed</b> extension documentation</a></span></li>
 <li><span><a href="https://github.com/zed-industries/zed/"><b>Zed</b> source-code</a></span></li>
+</ul>
+</p>
+</li>
+<li name="footnote-2" id="f2">
+<p name="footnote-2-content">
+<span><a href="#fb2">↩</a> <strong>Code, folders, etc; made specifically for developers, and <i>not</i> end-users.</strong></span>
+<span><b>Currently tracked development files/folders</b></span>
+<span>Presented in `.gitignore` format.</span>
+<ul>
+<li><code>.zed/</code></li>
+<li><code>.dev/</code></li>
+<li><code>.venv/</code></li>
+<li><code>.python-version</code></li>
+<li><code>pyproject.toml</code><sup>Not implemented yet</sup></li>
+<li><code>*.spec</code><sup>Not implemented yet</sup></li>
+<li><code>*.sh</code><sup>Not implemented yet</sup></li>
+<li><code>*.bat</code><sup>Not implemented yet</sup></li>
+<li><code>*.cmd</code><sup>Not implemented yet</sup></li>
+<li><code>*.ps1</code><sup>Not implemented yet</sup></li>
 </ul>
 </p>
 </li>
