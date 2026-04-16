@@ -52,9 +52,8 @@ of configuration files in the future.
 <div id="document-footnote">
 <ol>
 <li name="footnote-1" id="f1">
-<sub>Backlink <a href="#fb1">↩</a></sub>
 <p name="footnote-1-content">
-<strong>Resources I used for development</strong>
+<a href="#fb1">↩</a><strong>Resources I used for development</strong>
 <ul>
 <li><span><a href="https://rust-lang.github.io/rustfmt/"><b>Rustfmt</b> documentation</a></span></li>
 <li><span><a href="https://zed.dev/docs/extensions/"><b>Zed</b> extension documentation</a></span></li>
