@@ -1,11 +1,14 @@
 <div align="center">
 <h1 align="center">
-Rustfmt Language Server
+Configurations Language Server
 </h1>
 <p align="center">
+<i>Syntax highlighting</i>, <i>autocompletion</i>, and more for various different configuration files!
+</p>
+<p align="center">
 <span align="center">
-<span>Developed for use with my </span>
-<span><b><a href="https://github.com/MysticalMike60t/zed-rustfmt">rustfmt</a></b></span>
+<span>Developed for use with </span>
+<span><b><a href="https://github.com/MysticalMike60t/zed-rustfmt">rustfmt</a></b> (more coming soon)</span>
 <span> extension for </span>
 <span><b><a href="https://github.com/zed-industries/zed">Zed</a></b></span>
 <span>.</span>
@@ -14,16 +17,25 @@ Rustfmt Language Server
 </div>
 
 <div align="center">
-<img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/MysticalMike60t/rustfmt-lsp-server/release.yml?style=plastic">
-<img alt="Deps.rs Repository Dependencies" src="https://img.shields.io/deps-rs/repo/github/MysticalMike60t/rustfmt-lsp-server?style=plastic">
+<img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/MysticalMike60t/configs-lsp-server/release.yml?style=plastic">
+<img alt="Deps.rs Repository Dependencies" src="https://img.shields.io/deps-rs/repo/github/MysticalMike60t/configs-lsp-server?style=plastic">
 </div>
 
 <div align="center">
-<img alt="GitHub License" src="https://img.shields.io/github/license/MysticalMike60t/rustfmt-lsp-server?style=plastic">
-<img alt="GitHub commits since latest release" src="https://img.shields.io/github/commits-since/MysticalMike60t/rustfmt-lsp-server/latest?sort=semver&style=plastic">
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/MysticalMike60t/rustfmt-lsp-server?style=plastic">
-<img alt="GitHub repo file or directory count" src="https://img.shields.io/github/directory-file-count/MysticalMike60t/rustfmt-lsp-server?style=plastic">
-<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/MysticalMike60t/rustfmt-lsp-server?style=plastic">
+<img alt="GitHub License" src="https://img.shields.io/github/license/MysticalMike60t/configs-lsp-server?style=plastic">
+<img alt="GitHub commits since latest release" src="https://img.shields.io/github/commits-since/MysticalMike60t/configs-lsp-server/latest?sort=semver&style=plastic">
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/MysticalMike60t/configs-lsp-server?style=plastic">
+<img alt="GitHub repo file or directory count" src="https://img.shields.io/github/directory-file-count/MysticalMike60t/configs-lsp-server?style=plastic">
+<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/MysticalMike60t/configs-lsp-server?style=plastic">
+</div>
+
+<div>
+<h2>Current supported files</h2>
+<p>Last updated on <b>16/04/2026</b></p>
+<ol>
+<li>`rustfmt.toml` <sub id="fb1">[1](#f1)</sub></li>
+<li>`.rustfmt.toml` <sub id="fb1">[1](#f1)</sub></li>
+</ol>
 </div>
 
 <div>
@@ -37,23 +49,18 @@ of configuration files in the future.
 </p>
 </div>
 
-<div>
-<h2>Resources</h2>
+<div id="document-footnote">
+<ol>
+<li name="footnote-1" id="f1">
+<sub>Backlink <a href="#fb1">↩</a></sub>
+<p name="footnote-1-content">
+<strong>Resources I used for development</strong>
 <ul>
-<li>
-<span>
-<a href="https://rust-lang.github.io/rustfmt/"><b>Rustfmt</b> documentation</a>
-</span>
-</li>
-<li>
-<span>
-<a href="https://zed.dev/docs/extensions/"><b>Zed</b> extension documentation</a>
-</span>
-</li>
-<li>
-<span>
-<a href="https://github.com/zed-industries/zed/"><b>Zed</b> source-code</a>
-</span>
-</li>
+<li><span><a href="https://rust-lang.github.io/rustfmt/"><b>Rustfmt</b> documentation</a></span></li>
+<li><span><a href="https://zed.dev/docs/extensions/"><b>Zed</b> extension documentation</a></span></li>
+<li><span><a href="https://github.com/zed-industries/zed/"><b>Zed</b> source-code</a></span></li>
 </ul>
+</p>
+</li>
+</ol>
 </div>
