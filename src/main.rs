@@ -27,6 +27,7 @@ enum ValueKind {
 }
 
 fn all_keys() -> Vec<KeyInfo> {
+    //TODO Implement JSON files for each language that handle all of these (or another config language if there is a better option).
     vec![
         KeyInfo {
             name: "array_width",

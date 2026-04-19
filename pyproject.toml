@@ -1,0 +1,15 @@
+[project]
+name = "conf-lsp"
+description = "Configs LSP Server dev tools."
+authors = [
+  {name = "Caden Finkelstein", email = "me@cadenf.com"},
+]
+maintainers = [
+  {name = "Caden Finkelstein", email = "me@cadenf.com"}
+]
+dynamic = ["version"]
+requires-python = ">=3.14.3"
+dependencies = [
+    "grip>=4.6.2"
+]
+readme = "README.md"
