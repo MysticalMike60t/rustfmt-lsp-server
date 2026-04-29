@@ -86,18 +86,17 @@ This also includes <i>all</i> files inside of the <code>.dev/</code> folder.
 <span>All of these files can be deleted, and the <i>language server</i> will work as expected.</span>
 <span>If it <strong>does</strong> make an impact on the main functionality, please <a href="https://github.com/MysticalMike60t/configs-lsp-server/issues/new/choose">Open an Issue</a>.</span>
 <span><b>Currently tracked development files/folders</b></span>
-<span>Presented in <code>.gitignore</code> format.</span>
+<span>presented in <code>.gitignore</code> format.</span>
 <ul>
 <li><code>.zed/</code></li>
-<li><code>.dev/</code></li>
-<li><code>.venv/</code></li>
-<li><code>.python-version</code></li>
-<li><code>pyproject.toml</code> <sup>Not implemented yet</up></li>
-<li><code>*.spec</code> <sup>Not implemented yet</sup></li>
-<li><code>*.sh</code> <sup>Not implemented yet</sup></li>
-<li><code>*.bat</code> <sup>Not implemented yet</sup></li>
-<li><code>*.cmd</code> <sup>Not implemented yet</sup></li>
-<li><code>*.ps1</code> <sup>Not implemented yet</sup></li>
+<li><code>.venv/</code><span> </span><sup>File(s) not currently used</sup></li>
+<li><code>.python-version</code><span> </span><sup>File(s) not currently used</sup></li>
+<li><code>pyproject.toml</code><span> </span><sup>File(s) not currently used</sup></li>
+<li><code>*.spec</code><span> </span><sup>File(s) not currently used</sup></li>
+<li><code>*.sh</code><span> </span><sup>File(s) not currently used</sup></li>
+<li><code>*.bat</code><span> </span><sup>File(s) not currently used</sup></li>
+<li><code>*.cmd</code><span> </span><sup>File(s) not currently used</sup></li>
+<li><code>*.ps1</code><span> </span><sup>File(s) not currently used</sup></li>
 </ul>
 </p>
 </li>
